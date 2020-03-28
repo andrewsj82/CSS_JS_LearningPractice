@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+section {
+    position: absolute;
+    width: 100%;
+    height:  100vh;
+    /*background: #000; commenting out once bgColor animation picks bg*/
+    overflow: hidden;
+    animation: bgColor 15000ms linear infinite;
+}
+.bgPulse {
+    width: 100%;
+    height: 100%;
+}
+.bgPulse span {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    opacity: 0;
+}
+.bgPulse span:nth-child(3n+1) {
+    background: transparent;
+    border: 5px solid #fff;
+}
+.bgPulse span:nth-child(1) {
+    top: 50%;
+    left: 10%;
+    animation: animate 6500ms linear infinite;
+}
+.bgPulse span:nth-child(2) {
+    top: 80%;
+    left: 40%;
+    animation: animate 3900ms linear infinite;
+}
+.bgPulse span:nth-child(3) {
+    top: 10%;
+    left: 65%;
+    animation: animate 8601ms linear infinite;
+}
+.bgPulse span:nth-child(4) {
+    top: 50%;
+    left: 55%;
+    animation: animate 9160ms linear infinite;
+}
+.bgPulse span:nth-child(5) {
+    top: 15%;
+    left: 30%;
+    animation: animate 8000ms linear infinite;
+}
+.bgPulse span:nth-child(6) {
+    top: 90%;
+    left: 95%;
+    animation: animate 7700ms linear infinite;
+}
+.bgPulse span:nth-child(7) {
+    top: 80%;
+    left: 5%;
+    animation: animate 2800ms linear infinite;
+}
+.bgPulse span:nth-child(8) {
+    top: 30%;
+    left: 50%;
+    animation: animate 4000ms linear infinite;
+}
+.bgPulse span:nth-child(9) {
+    top: 20%;
+    left: 12%;
+    animation: animate 6100ms linear infinite;
+}
+.bgPulse span:nth-child(10) {
+    top: 25%;
+    left: 90%;
+    animation: animate 9300ms linear infinite;
+}
+.bgPulse span:nth-child(11) {
+    top: 40%;
+    left: 30%;
+    animation: animate 6900ms linear infinite;
+}
+.bgPulse span:nth-child(12) {
+    top: 68%;
+    left: 80%;
+    animation: animate 8800ms linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(0) translateY(0) rotate(0deg);
+        opacity: 1; 
+    } 100% {
+        transform: scale(1) translateY(-150px) rotate(540deg);
+        opacity: 0;
+    }
+}
+@keyframes bgColor {
+    0% {
+        background: #F44336;
+
+    }
+    25% {
+        background: #03A9F4;
+    }
+    50% {
+        background: #00ff0a;
+    }
+    75% {
+        background: #F44336;
+    }
+    100% {
+        background: #F44336;
+    }
+}
