@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.navMenu {
+    width: 100%;
+    height: 20vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.navMenu .btnCont {
+    position: relative;
+}
+.navMenu .btnCont .logo {
+    position: absolute;
+    margin: 2% 2%;
+}
+.navMenu .btnCont h1 {
+    position: absolute;
+    color: white;
+    font: small-caps bold 55px/1 Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    width: 70vw;
+    opacity: 20%;
+    text-align: center;
+}
+.navMenu .btnCont .btn i {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+}
+.navMenu .btnCont .btn .fa {
+    color: white;    
+    float: right;
+    padding-right: 7%;
+}
