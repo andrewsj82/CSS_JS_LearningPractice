@@ -1,0 +1,129 @@
+		/* Functions As Data */
+
+//example 1: 
+	
+	const sayHello = name => console.log('Hello' + name);
+
+	const sayHello2 = sayHello;
+	sayHello2('Shaun');
+
+//example 2: this one uses the ternary operator to run two different methods, dependent 	//on the boolean being true or false. great for testing situations.
+
+	const myFunction = true
+	  ? () => console.log('First option')
+	  : () => console.log('Second option');
+
+
+//example 3:
+	
+	const DEVELOPMENT = true;
+	
+	const fetchDataReal = () => {
+	  // time intensive operations here!
+	}
+
+	//this function below is supposed to be an example of the data that
+	//we expect to get back from the server, from the DataReal function.
+
+	const fetchDataFake = () => ({
+	  name: 'John Doe',
+	  age: 34,
+	})	  
+	
+	//here we will use the ternary operator to decide which of the function 		//definitions will be used at runtime.this is an easy A/B testing script for 	//functions.
+	
+	const fetchData = DEVELOPMENT
+	  ? fetchDataFake
+	  : fetchDataReal
+	
+
+//example 4: another interesting use of FCFs in JS. Building an array of functions.
+
+	const DOUBLE = x => x * 2;
+	const SUBTRACTONE = x => x - 1;
+	const TRIPLE = x => x * 3;
+	const ADD5 = x => x + 5;
+
+
+	//notice again, when calling the functions in the array, instead of just 		//referring to the result the function returns, we don't use the parenthesis 		//after the name.
+
+	const FUNCTSARRAY = [
+	  DOUBLE,
+	  SUBTRACTONE,
+	  TRIPLE,
+	  ADD5,
+	];
+
+	//the below scripting is procedural, and uses mutation, but easily 
+	//illustrates the flow of the way the array of functions works. the
+	//proper functional way is shown later.
+
+	var number = 42;
+	functionsArray.forEach(func => number = func(number));
+
+
+		/* Passing Functions as Arguments */
+//example 5: as you can see the functions can be combined, even with built in 
+//functions. or you can use an Anonymous Function, like the last line, where the
+//desired function is very specific and not worth creating a name, as it won't be //reused later.
+
+	const ADD = (x, y) => x + y;
+	const SUBTR = (x, y) => x - y;
+	const COMBINE2AND3 = func => func(2, 3);
+
+	COMBINE2AND3(ADD); // -> 2 + 3
+	COMBINE2AND3(SUBTR); // -> 2 - 3
+
+	COMBINE2AND3(Math.max) // -> 3
+
+
+	COMBINE2AND3((x, y) => x + y);
+
+
+		/* Returning Functions */
+//example 6: simplest version of a function that is returned. this is the shorthand.
+
+	const CREATEPRINTER = () => () => console.log('Hello');
+
+//here's the full version.
+
+	const CREATEPRINTER = function() {
+	  return function() {
+	    console.log('Hello');
+	  }
+	}  
+	
+
+//example 7: a more practical example. here are 3 functions. we are going to create
+//a function that will create the repetitions for use, instead of setting up all the
+//repetitive code ourselves.
+
+	const DOUBLE = x => x * 2;
+	const TRIPLE = x => x * 3;
+	const QUADRPL = x => x * 4;
+
+//here's the functional codebase for the above examples.
+
+	const CREATEMULTIPLIER = y => x => x * y;
+
+	const DOUBLE = CREATEMULTIPLIER(2);
+	const TRIPLE = CREATEMULTIPLIER(3);
+	const QUADRPL = CREATEMULTIPLIER(4);
+
+	DOUBLE(3)
+
+		/* Closures in JS */
+
+//closure means: when we define a function that returns another function, the function
+//that we returned still has access to the internal scope of the function that 
+//returned it. see the below example.
+
+	const CREATEPRINTER = () => {
+	  const FAVENUMBER = 42;
+	  return () => 
+	    console.log(`My favorite number is ${FAVENUMBER}`);
+	}
+
+	const PRINTER = CREATEPRINTER();
+	PRINTER();
+	

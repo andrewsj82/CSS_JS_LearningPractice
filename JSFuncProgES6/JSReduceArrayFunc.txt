@@ -1,0 +1,47 @@
+		/* JS Reduce Array Function */
+
+//Reduce allows us to take an array and reduce it to a single data value, such as
+//finding the sum or average.you can see the generic code syntax below
+
+
+	myArray.reduce((acc, element) => {
+	  ...
+	  return ...	//i.e. return acc + element
+	});
+
+//the acc argument is the accumulator, for storing the total as it loops through the
+//array. you must also pass the reduce function a starting number in the return
+//statement, as below.
+
+	const SUM = myArray.reduce((acc, element) => {
+	  return acc + element, 0)	
+
+//Example 1: find array sum
+	
+	const Numbers = [5,7,2,40,32,13,8,4,11]
+	const Sum = Numbers.reduce((acc), x) => {
+	  console.log(`acc is ${acc}`);
+	  console.log(`x is ${x}`);
+	  return acc + x;
+	}, 0)
+
+	>>>acc is 0
+	>>>x is 5
+
+	>>>acc is 5 
+	>>>x is 7
+
+	>>>acc is 12
+	>>>x is 2.......
+
+//Example 2: product of array numbers (has starting number of 1 due to multiply by 0)
+
+
+	const Product = Numbers.reduce((acc), x) => {
+	  console.log(`acc is ${acc}`);
+	  console.log(`x is ${x}`);
+	  return acc * x;
+	}, 1)
+
+
+8164482116

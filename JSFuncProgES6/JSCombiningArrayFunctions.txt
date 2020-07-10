@@ -1,0 +1,65 @@
+		/* Combining Array Functions */
+
+	const Employees = [{
+	  name: 'John Olsen',
+	  age: 54,
+	  jobTitle: 'developer',
+	  salary: 70000,
+	}, {
+	  name: 'Karen Norris',
+	  age: 34,
+	  jobTitle: 'developer',
+	  salary: 75000,
+	}, {
+	  name: 'Daryl Cline',
+	  age: 25,
+	  jobTitle: 'secretary',
+	  salary: 40000,
+	}, {
+	  name: 'Wolfy McSales',
+	  age: 25,
+	  jobTitle: 'sales',
+	  salary: 140000,
+	}, {
+	  name: 'Helen Cline',
+	  age: 22,
+	  jobTitle: 'part-time secretary',
+	  salary: 20000,
+	}, {
+	  name: 'Sid Vicious',
+	  age: 52,
+	  jobTitle: 'mechanic',
+	  salary: 54000,
+	}]
+
+
+//we are going to sort our above array to compare the salary of the developers versus
+//all other team members. to do this we will be combining multiple array functions
+//to get to our end result data. first set the developer's constant below, defining
+//an anonymous function to get all results with developer for the job title.
+
+	const Developers = Employees.filter(employee =>
+	  employee.jobTitle === 'developer');
+
+//next we will take the array of developers and narrow it further to an array of only
+//their salary attributes. then an array for the total salaries.
+
+	const developerSalaries = Developers.map(developer => developer.salary)
+	const totalDevSalaries = developerSalaries.reduce((acc, x) => acc + x, 0);
+
+//and finally a const that will reduce the total by dividing the number of devs for avg
+
+	const avgDevSalary = totalDevSalaries / developerSalaries.length;
+	console.log(avgDevSalary);
+
+//next we'll repeat the above steps for the non-developers, to retreive their avg 
+//salary to compare with the avgDevSalary we just found.
+
+	const nonDevs = employees.filter(employee =>
+	  emlpoyee.jobTitle !== 'developer');
+	const nonDevSalary = nonDevs.map(nonDev => nonDev.salary);
+	const totalNonDevSalaries = nonDevSalary.reduce((acc, x) => acc + x, 0);
+	const avgNonDevSalary = totalNonDevSalaries / nonDevSalary.length;
+	console.log(avgNonDevSalary);
+
+//finally we can compare the two results...

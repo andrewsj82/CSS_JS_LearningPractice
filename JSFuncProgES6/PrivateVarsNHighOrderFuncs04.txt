@@ -1,0 +1,78 @@
+		/* Implementing Private Variables */
+
+//when reading other people's code, you will often run into code that uses an _ before
+//the variable name. it's supposed to signify that you should never directly use this
+//variable class. but many times they will, regardless.
+
+//below we are going to look at a better way to create the class. instead of using the
+//class keyword, we will define it as a function that returns a new person object.
+
+	const PERSON = ({ name, age, job }) => {
+	  var _name = name;
+	  var _age = age'
+	  var _job = job;
+	  
+	  return {
+	    getName: () => _name,
+	    getAge: () => _age,
+	    getJob: () => _job,
+
+	    setJob: newJob => _job = newJob,
+	    setAge: newAge => _age = newAge,
+	    setName: newName => _name = newName,
+	  };
+	}
+
+	const ME = PERSON({ name: 'Shaun', age: 25, job; 'developer' });
+
+//our return state above, via the 'getName:' method, will ensure that the name var
+//can only be accessed by getters, and setters. you would not be able to use the
+//common 'ME._name;' to access the content of the name variable via Closure.
+
+//the setJob: function created in the return statement is a setter example. it will
+//allow us to update the job variable. here is the code that would allow you to 
+//access and update the var.
+
+	ME.setJob('senior developer');
+
+
+		/* High-Order Functions */
+
+/*functions that either take other functions as arguments or return functions are 
+called High-Order Functions. they can provide amazing flexibility and re-usability.*/
+
+//first we will solve the problem of checking arguments in JS. when we want to make
+//sure our arguments meet certain criteria, types, number of elements, etc. Below is
+//the standard way to check to make sure one argument is not = to zero.
+
+	const DIVIDE = (x, y) => {
+	  if (y === 0) {
+	    console.log('Error: dividing by zero');
+	    return null;
+	  }
+
+	  return x / y;
+	}
+
+//but if we are trying to follow the rules of programming, and specifically the rule
+//stating that a piece of code should only do one thing, or you should refactor, 
+//this will not be acceptable. we will use HOFs to resolve it with the code below.
+//the '(...args)' Spread keyword will assign the nested function to check all the
+//args that are passed to it.
+
+	const SECONDARGISNTZERO = func => 
+		(...args) => {
+	  	if (args[1] === 0) {
+	   	 console.log('Error: dividing by zero');
+	   	 return null;
+	  	}
+	 	 return func(...args);
+		}
+
+//here we can see the above function utilized by the below code. passing 7 and 0.
+	 
+	const DIVIDESAFE = SECONDARGISNTZERO(divide);
+	console.log(DIVIDESAFE(7, 0));
+
+
+ 

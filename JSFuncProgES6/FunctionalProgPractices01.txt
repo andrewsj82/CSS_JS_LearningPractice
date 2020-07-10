@@ -1,0 +1,84 @@
+	/* Understanding the Practices of Functional Programming */
+
+Functional programming tries to make programming Declarative, more like mathmatical functions and algorithms. Instead of creating steps that describe 'what' will take place next, FP describes 'how' an object works.
+
+The FIRST main characteristic of FP is Immutability. Normally when programming, we commonly utilize placeholder variables, that will be changed during different times during the program being ran, and will be used to return different outputs throughout it's life cycle. FP utilizes constants for variables, making the variables unchangeable throughout the program, greatly reducing the chance for bugs/errors/state change. See the example below for the FP way to update an employee's salary.
+
+	const employee1 = {
+		name: 'John',
+		salary: 60000,
+	};
+
+
+	const updatedEmployee1 = {
+	  name: employee1.name,
+	  salary: employee1.salary + 10000,
+	};
+
+The SECOND characteristic is the separation of Data and Functions. Data is described as: any values that a program contains - people's names, addresses, phone numbers, years, models, colors, positions, etc.
+	{
+	  model: "Chevy Sonic",
+	  year: "2012",
+	  color: "Blue",
+	  miles: "123000",
+	}
+Functions are defined in FP as: any operation that we can apply to our data to convert it into useful/useable information. In OOP functions are wrapped up inside objects along with the data that they operate on, and allow us to access or make changes to that data. In FP, functions are completely separate entities from the data that they operate on. In order to operate on any given data, the data must be passed as arguments to the function, instead of using the 'this' keyword, as in OOP. And for immutabilities sake, functions should never make changes to any of the data they touch, but instead return a modified copy of the data.
+	The OOP Way:
+		class Person {
+		  constructor(name, age) {
+		    this._name = name;
+		    this._age = age;
+		  }
+		  function increaseAge() {
+		    this._age += 1;
+		  }
+		}
+
+	The FP Way:
+		const CREATEPERSON = (firstName, lastName) => ({
+		  firstName,
+		  lastName,
+		  initials: ${firstName.charAt(0)}${lastName.charAt(0)},
+		});
+
+		const person1 = createPerson('John', 'Doe");
+		
+The THIRD major concept of FP is First-Class Functions. Normally, when doing OOP, you wouldn't typically see an array of functions, or passing functions as arguments to a method, or even returning functions from other functions. A FCF gives the opportunity to treat functions similarly as data types like strings, or objects. OOP tightly couples functions and data together, i.e. the functions inside a class usually reference the data that they operate on. See below OOP example.
+	class Person {
+	  constructor(name) {
+	    this._name = name;
+	  }
+	  setName(newName) {
+	    this._name = newName;
+	  }
+	}
+
+FCF example below. The first is the main function referencing the constant vars that create the object.
+	function getName(obj) {
+	  return obj.name;
+	}
+
+	const PERSON = {
+	  name: 'John Doe',
+	  age: 34;
+	};
+
+	const CITY = {
+	  name: 'New York',
+	  population: 8623000,
+	};
+
+Here's another FP/FCF example.
+	const arrayOfFunctions = [
+	  function sayHello() { /* ... */ },
+	  function shakeHands() { /* ... */ },
+	  function sayGoodbye() { /* ... */ },
+	];
+
+	doSomething(function sayHello() { /* ... */ });
+
+	function giveMeAFunction() {
+	  return function() {
+	    console.log('I am a function');
+	  }
+	}

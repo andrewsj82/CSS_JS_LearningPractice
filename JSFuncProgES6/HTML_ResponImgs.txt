@@ -1,0 +1,24 @@
+		HTML/CSS Responsive Images
+
+	** new attributes, descriptors, and elements for use with the img tag for responsiveness designs **
+
+srcset -  replaces src="" and is used to hold multiple 	images. syntax seperated by commas in the quotes 	(supposed to be for different sizes for responsive 	querying)
+
+i.e.	src="medium.png"
+	srcset="small.png 400x,medium.png 2x,large.png 3x"
+
+x -  pixel density descriptor. used after name of srcset 		image it will apply to. can only use x OR w after an 	image name in srcset, not both.
+
+w -  width descriptor used in srcset or src to set the actual 		width of the image.
+
+sizes - attribute that tells the browser the target width of 		the image in relation to the total width of the viewport.
+
+i.e.	sizes="(min-width: 800px) 50vw, 100vw
+
+<picture> - specifies media conditions for the use of specific 		image files. Typically used for art direction. forces 	browser to use a specific image per the defined rules
+
+i.e.	<picture>
+		<source srcset="large.png" media="(min-width: 					800px)">
+		<source srcset="medium.png" media="(min-					width: 600px)">
+		<img srcset="small.jpg" alt="Cherry blossoms">
+	</picture>

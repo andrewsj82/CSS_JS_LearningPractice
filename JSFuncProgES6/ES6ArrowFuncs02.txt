@@ -1,0 +1,52 @@
+		/* ES6 Arrow Functions Functional Programming */
+
+non-es6 function to be converted to arrow. 
+	
+	function myFunction(arg1, arg2) {
+	  //function body
+	}
+
+	const MYOTHERFUNCTION = function(arg1, arg2) {
+	  //function body
+	}
+
+
+original version to arrow functions. this is a long version.
+
+	const add = (x, y) => {
+	  const sum = x + y;
+	  return sum;
+	}	
+
+can be shortened to this.
+
+	const add = (x, y) => {
+	  return x + y;
+	}
+
+and again, to this. but only, if there is only one statement in the function, and if it is a return statement.
+
+	const add = (x, y) => x + y;
+
+
+another example of how arrow functions are allowed to be shortened.
+
+	const double = (number) => number * 2;
+
+to this.
+
+	const double = number => number * 2;
+
+
+for argumentless functions.
+
+	const sayHello = () => console.log('Hello');
+
+an argumentless function that returns an object.
+
+	const getPersonData = () => ({
+	  name: 'John Doe',
+	  age: 34,
+	  job: 'programmer',
+	});
+
